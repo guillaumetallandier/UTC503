@@ -6,256 +6,67 @@ using System.Threading.Tasks;
 
 namespace morpion
 {
+    
+
+
+
+    
+
     public class Puissance4
     {
-       
-        public Puissance4() { 
-        this.grille = new int[,]
-            {{0,0,0,0,0,0,0},
-            {0,0,0,0,0,0,0},
-            {0,0,0,0,0,0,0},
-            {0,0,0,0,0,0,0},
-            {0,0,0,0,0,0,0},
-            {0,0,0,0,0,0,0},
-            {0,0,0,0,0,0,0}
-            };
-        }
-
-        public int[,] grille;
-
-        public bool ligneComplete(int i, int j, int val)
-        {
-           
-            if (j - 3 >= 0)
-            {
-                if ((this.grille[i, j] == val) && (this.grille[i, j - 1] == val) && (this.grille[i, j - 2] == val) && (this.grille[i, j - 3] == val))
-                {
-                    return true;
-                }
-            }
-            if (j - 2 >= 0 && j + 1 <= 6)
-            {
-                if ((this.grille[i, j + 1] == val) && (this.grille[i, j] == val) && (this.grille[i, j - 1] == val) && (this.grille[i, j - 2] == val))
-                {
-                    return true;
-                }
-            }
-            if (j - 1 >= 0 && j + 2 <= 6) {  
-                if ((this.grille[i, j + 2] == val) && (this.grille[i, j + 1] == val) && (this.grille[i, j] == val) && (this.grille[i, j - 1] == val))
-                {
-                    return true;
-                }
-            }
-            if (j + 3 <= 6)
-            {
-                if ((this.grille[i, j + 3] == val) && (this.grille[i, j + 2] == val) && (this.grille[i, j + 1] == val) && (this.grille[i, j] == val))
-                {
-                    return true;
-                }
-            }
-            
-            return false;
-        }
-
-        public bool colonneComplete(int i, int j, int val)
-        {
-            
-            if (i - 3 >= 0)
-            {
-                if ((this.grille[i, j] == val) && (this.grille[i - 1, j] == val) && (this.grille[i - 2, j] == val) && (this.grille[i - 3, j] == val))
-                {
-                    return true;
-                }
-            }
-            if (i - 2 >= 0 && i + 1 <= 6)
-            {
-                if ((this.grille[i + 1, j] == val) && (this.grille[i, j] == val) && (this.grille[i - 1, j] == val) && (this.grille[i - 2, j] == val))
-                {
-                    return true;
-                }
-            }
-            if (i - 1 >= 0 && i + 2 <= 6)
-            {
-                if ((this.grille[i + 2, j] == val) && (this.grille[i + 1, j] == val) && (this.grille[i, j] == val) && (this.grille[i - 1, j] == val))
-                {
-                    return true;
-                }
-            }
-            if (i + 3 <= 6)
-            {
-                if ((this.grille[i + 3, j] == val) && (this.grille[i + 2, j] == val) && (this.grille[i + 1, j] == val) && (this.grille[i, j] == val))
-                {
-                    return true;
-                }
-            }
-            return false;
-        }
-
-        public bool diagonalGHComplete(int i, int j, int val)
-        {
-           
-            if (i -3 >= 0 && j-3>=0)
-            {
-                if ((this.grille[i, j] == val) && (this.grille[i - 1, j - 1] == val) && (this.grille[i - 2, j - 2] == val) && (this.grille[i - 3, j - 3] == val))
-                {
-                    return true;
-                }
-            }
-            if (i - 2 >= 0 && j - 2 >= 0 && i +1 <= 6 && j +1 <= 0)
-            {
-                if ((this.grille[i + 1, j + 1] == val) && (this.grille[i, j] == val) && (this.grille[i - 1, j - 1] == val) && (this.grille[i - 2, j - 2] == val))
-                {
-                    return true;
-                }
-            }
-            if (i - 1 >= 0 && j - 1 >= 0 && i + 2 <= 6 && j + 2 <= 0)
-            {
-                if ((this.grille[i + 2, j + 2] == val) && (this.grille[i + 1, j + 1] == val) && (this.grille[i, j] == val) && (this.grille[i - 1, j - 1] == val))
-                {
-                    return true;
-                }
-            }
-            if ( i + 3 <= 6 && j + 3 <= 0)
-                if ((this.grille[i + 3, j + 3] == val) && (this.grille[i + 2, j + 2] == val) && (this.grille[i + 1, j + 1] == val) && (this.grille[i, j] == val))
-            {
-                return true;
-            }
-           
-            return false;
-        }
-
-        public bool diagonalGBComplete(int i, int j, int val)
-        {
-           
-            if ( j - 3 >= 0 && i + 3 <= 6)
-            {
-                if ((this.grille[i, j] == val) && (this.grille[i + 1, j - 1] == val) && (this.grille[i + 2, j - 2] == val) && (this.grille[i + 3, j - 3] == val))
-                {
-                    return true;
-                }
-            }
-            if (i - 1 >= 0 && i + 2 <= 6 && j - 2 >= 0 && j + 1 <= 6)
-            {
-                if ((this.grille[i - 1, j + 1] == val) && (this.grille[i, j] == val) && (this.grille[i + 1, j - 1] == val) && (this.grille[i + 2, j - 2] == val))
-                {
-                    return true;
-                }
-            }
-            if (i - 2 >= 0 && i + 1 <= 6 && j - 2 >= 0 && j + 2 <= 6)
-            {
-                if ((this.grille[i - 2, j + 2] == val) && (this.grille[i - 1, j + 1] == val) && (this.grille[i, j] == val) && (this.grille[i + 1, j - 1] == val))
-                {
-                    return true;
-                }
-            }
-            if (i - 3 >= 0 && j + 3 <= 6)
-            {
-                if ((this.grille[i - 3, j + 3] == val) && (this.grille[i - 2, j + 2] == val) && (this.grille[i - 1, j + 1] == val) && (this.grille[i, j] == val))
-                {
-                    return true;
-                }
-            }
-            return false;
-        }
-
-
-        public int graviter(string j, bool player) {
-            int i = 0;
-            int valeur;
-            int valeurKey = int.Parse(j) -1;
-            
-            if (valeurKey > 7)
-            {
-                return -1;
-            }
-            if (player)
-            {
-                valeur = 2;
-            }
-            else
-            { 
-                valeur = 1;
-            }
-            while (this.grille[i, valeurKey]== 0 && i<6)
-            {  
-                if (i < 6)
-                {
-                    i++;
-                }
-                
-            }
-            if(this.grille[i,valeurKey] == 0)
-            {
-
-                this.grille[i, valeurKey] = valeur; 
-            }
-            else
-            {
-                if (i-1 < 0)
-                {
-                    Console.WriteLine("Colone pleine !");
-                    return -1;
-                }
-                this.grille[i - 1, valeurKey] = valeur;
-            }
-            if (this.victoire(i-1, valeurKey, valeur))
-            {
-                return 1;
-            };
-            return 0;
-        }
-
-        public bool victoire(int i, int j, int val)
+        
+        public Puissance4()
         { 
-            if (this.diagonalGBComplete(i, j, val) || this.diagonalGHComplete(i, j, val) || this.colonneComplete(i, j, val) || this.ligneComplete(i, j, val))
-            {
-                Console.WriteLine("Bravo joueur " + val + " à gagné !! :D");
-                return true;
-            }
-            else
-            {
-                return false;
-            }
         }
 
-        public void afficheGrille()
+        public Joueur game(GrillePuissance grille, Joueur j1, Joueur j2)
         {
-            string[,] tab = new string[,]
-            {{ " "," "," ", " "," "," "," "},
-            { " "," "," ", " "," "," "," "},
-            { " "," "," ", " "," "," "," "},
-            { " "," "," ", " "," "," "," "},
-            { " "," "," ", " "," "," "," "},
-            { " "," "," ", " "," "," "," "},
-            { " "," "," ", " "," "," "," "}
-         
-                };
+            
 
-		    for (int i = 0; i<7; i++)
+
+            Console.WriteLine("Player 1 : 1");
+            Console.WriteLine("Player 2 : 2");
+            Console.WriteLine();
+            grille.afficheGrille();
+            bool victoire = false;
+            Joueur jTmp = j1;
+            while (!victoire)
             {
-			    for(int j = 0; j<7; j++)
+                string tempoAffichage = Console.ReadLine();
+                Console.Clear();
+                int tmp = grille.graviter(tempoAffichage, jTmp);
+
+                switch (tmp)
                 {
-                    if (this.grille[i, j] != 0)
-                    {
-                        tab[i, j] = this.grille[i, j].ToString(); ;
-                    }
+                    case 0:
+                        // le joueur a pu joueur 
+                        if (jTmp.getNumero()==j1.getNumero())
+                        {
+                            jTmp = j2;
+                        }
+                        else
+                        {
+                            jTmp = j1;
+                        }
+                        break;
+                    case -1:
+                        // le joueur n'a pu joueur 
+
+                        break;
+                    case 1:
+                        // le joueur a gagné la partie !
+                        victoire = true;
+                        break;
                 }
+               grille.afficheGrille();
+
+                
 
             }
-            Console.WriteLine("| 1 | 2 | 3 | 4 | 5 | 6 | 7 |");
-            Console.WriteLine("*---*---*---*---*---*---*---*");
-            Console.WriteLine("| " + tab[0, 0] + " | " + tab[0, 1] + " | " + tab[0, 2] + " | " + tab[0, 3] + " | " + tab[0, 4] + " | " + tab[0, 5] + " | " + tab[0, 6] + " | ");
-            Console.WriteLine("| " + tab[1, 0] + " | " + tab[1, 1] + " | " + tab[1, 2] + " | " + tab[1, 3] + " | " + tab[1, 4] + " | " + tab[1, 5] + " | " + tab[1, 6] + " | ");
-            Console.WriteLine("| " + tab[2, 0] + " | " + tab[2, 1] + " | " + tab[2, 2] + " | " + tab[2, 3] + " | " + tab[2, 4] + " | " + tab[2, 5] + " | " + tab[2, 6] + " | ");
-            Console.WriteLine("| " + tab[3, 0] + " | " + tab[3, 1] + " | " + tab[3, 2] + " | " + tab[3, 3] + " | " + tab[3, 4] + " | " + tab[3, 5] + " | " + tab[3, 6] + " | ");
-            Console.WriteLine("| " + tab[4, 0] + " | " + tab[4, 1] + " | " + tab[4, 2] + " | " + tab[4, 3] + " | " + tab[4, 4] + " | " + tab[4, 5] + " | " + tab[4, 6] + " | ");
-            Console.WriteLine("| " + tab[5, 0] + " | " + tab[5, 1] + " | " + tab[5, 2] + " | " + tab[5, 3] + " | " + tab[5, 4] + " | " + tab[5, 5] + " | " + tab[5, 6] + " | ");
-            Console.WriteLine("| " + tab[6, 0] + " | " + tab[6, 1] + " | " + tab[6, 2] + " | " + tab[6, 3] + " | " + tab[6, 4] + " | " + tab[6, 5] + " | " + tab[6, 6] + " | ");
-            Console.WriteLine("*---*---*---*---*---*---*---*");
 
+            return jTmp;
 
         }
-
-
     }
+
 }
